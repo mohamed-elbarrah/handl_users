@@ -3,35 +3,20 @@ import { UsersContext } from "./UsersApp";
 
 
 
-export default function UsersAdd() {
+export default function UsersEdit() {
   const fullName = useRef(null);
   const country = useRef(null);
 
 
-  const context = useContext(UsersContext);
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    context.addUser({
-    payload: {
-        id: context.lastId + 1,
-        fullName: fullName.current.value,
-        country: country.current.value,
-    }
-  });
-
-    // console.log({
-    //   fullName: fullName.current.value,
-    //   country: country.current.value,
-    // });
-    fullName.current.value = "";
-    country.current.value = "";
   };
 
   return (
     <div className="grid gap-6 mb-6 md:grid-cols-2">
-      <h1 className="text-2xl font-bold">Current id: {context.lastId + 1}</h1>
+      <h1 className="text-2xl font-bold">Updat infos</h1>
       <form onSubmit={handleSubmit} className="max-w-sm mx-auto">
         <div className="mb-5">
           <input

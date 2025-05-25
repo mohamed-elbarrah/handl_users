@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { use } from 'react'
+import { useContext } from 'react';
+import { UsersContext } from './UsersApp';
 
-export default function UsersTable({users}) {
+
+
+
+export default function UsersTable() {
+
+    const context = useContext(UsersContext);
+
+
+
   return (
     <div>
       <table className="w-full text-md bg-white shadow-md rounded mb-4">
@@ -21,13 +31,13 @@ export default function UsersTable({users}) {
             </tr> */}
 
             {
-                (users.length > 0)? users.map((user, key) => (
+                (context.users.length > 0)? context.users.map((user, key) => (
                     <tr key={key} className='border-b hover:bg-orange-100 text-black'>
                         <td className='p-3 px-5'>{user.id}</td>
                         <td className='p-3 px-5'>{user.fullName}</td>
                         <td className='p-3 px-5'>{user.country}</td>
                         <td className="p-3 px-5 flex justify-end">
-                        <button type="button" className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</button>
+                        <button  type="button" className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</button>
                         <button type="button" className="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button>
                         </td>
                     </tr>
@@ -37,7 +47,7 @@ export default function UsersTable({users}) {
 
                 (
                     <tr className='border-b hover:bg-orange-100 text-black'>
-                        <td className='p-3 px-5' colSpan={4}>No users found</td> 
+                        <td className='p-3 px-5' colSpan={4}>No context.users found</td> 
                     </tr>
                 )
             }
