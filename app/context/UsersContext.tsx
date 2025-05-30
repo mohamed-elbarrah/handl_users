@@ -21,6 +21,7 @@ export const UsersProvider = ({ children }) => {
   
     // Function to add a new user
   const addUser = (data) => {
+    setLastId((prevId) => prevId + 1);
 
     // alert("addUser called");
     console.table(data.payload);
@@ -29,7 +30,7 @@ export const UsersProvider = ({ children }) => {
   
 
   return (
-    <UsersContext.Provider value={{ users: users, lastId: lastId, setUsers, addUser, setLastId }}>
+    <UsersContext.Provider value={{ users: users, lastId: lastId, addUser}}>
       {children}
     </UsersContext.Provider>
   );
